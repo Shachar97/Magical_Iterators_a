@@ -9,7 +9,7 @@ using namespace std;
 
 namespace ariel{
 
-    MagicalContainer::AscendingIterator::AscendingIterator(MagicalContainer magic)
+    MagicalContainer::AscendingIterator::AscendingIterator(MagicalContainer& magic)
         :ascIter_(new vector<int>),currentIndex_(0){/*TODO: build insert linklist of magic (deep copy)*/
       
         *ascIter_=*(magic.magic_); // O(n)
@@ -62,7 +62,7 @@ namespace ariel{
     }
 
     bool ariel::MagicalContainer::AscendingIterator::operator==(const ariel::MagicalContainer::AscendingIterator &other) const {
-        return currentIndex_ == other.currentIndex_;
+        return &*this == &other;
     }
 
     bool ariel::MagicalContainer::AscendingIterator::operator!=(const ariel::MagicalContainer::AscendingIterator &other) const {

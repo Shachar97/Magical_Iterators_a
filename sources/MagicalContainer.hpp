@@ -23,7 +23,7 @@ namespace ariel{
         vector<int>* ascIter_;
         size_t currentIndex_;
     public:
-        AscendingIterator(MagicalContainer magic);
+        AscendingIterator(MagicalContainer& magic);
 
         AscendingIterator& operator=(const AscendingIterator& other);
 
@@ -82,7 +82,7 @@ namespace ariel{
     size_t currentIndex_;
               
     public:
-        SideCrossIterator(MagicalContainer magic);
+        SideCrossIterator(MagicalContainer& magic);
 
         SideCrossIterator& operator=(const SideCrossIterator& other);
 
@@ -139,7 +139,7 @@ namespace ariel{
         size_t currentIndex_;
         
     public:
-        PrimeIterator(MagicalContainer magic);
+        PrimeIterator(MagicalContainer& magic);
 
         PrimeIterator& operator=(const PrimeIterator& other);
 
@@ -162,8 +162,10 @@ namespace ariel{
 
         PrimeIterator operator--(int);
 
+        /*EQ*/
         bool operator==(const PrimeIterator& other) const ;
 
+        /*NE*/
         bool operator!=(const PrimeIterator& other) const;
 
         bool operator==(const vector<int>::iterator other) const ;
@@ -204,12 +206,12 @@ namespace ariel{
             magic_->push_back(data);
 
             /*AscendingIterator*/
-            if(ascendIter_){/*TODO*/
+            if(ascendIter_ != nullptr){/*TODO*/
                 ascendIter_->addElement(data);
             }
 
             /*SideCrossIterator*/
-            if(sideIter_){/*TODO*/
+            if(sideIter_ != nullptr){/*TODO*/
                 sideIter_->addElement(data);
             }
 

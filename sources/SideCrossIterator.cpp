@@ -7,7 +7,7 @@
 using namespace std;
 
 namespace ariel{
-    ariel::MagicalContainer::SideCrossIterator::SideCrossIterator(ariel::MagicalContainer magic)
+    ariel::MagicalContainer::SideCrossIterator::SideCrossIterator(ariel::MagicalContainer& magic)
             :sideIter_(new vector<int>),currentIndex_(0){
             
             if(magic.size()!=0){
@@ -92,7 +92,7 @@ namespace ariel{
         }
 
         bool ariel::MagicalContainer::SideCrossIterator::operator==(const ariel::MagicalContainer::SideCrossIterator &other) const {
-            return currentIndex_ == other.currentIndex_;
+            return &*this == &other;
         }
 
         bool ariel::MagicalContainer::SideCrossIterator::operator!=(const ariel::MagicalContainer::SideCrossIterator &other) const {

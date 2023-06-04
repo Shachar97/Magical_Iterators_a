@@ -7,7 +7,7 @@
 using namespace std;
 
 namespace ariel{
-    ariel::MagicalContainer::PrimeIterator::PrimeIterator(ariel::MagicalContainer magic)
+    ariel::MagicalContainer::PrimeIterator::PrimeIterator(ariel::MagicalContainer& magic)
         :primeIter_(new vector<int>),currentIndex_(0){
         if(magic.magic_->size()>0){
             
@@ -69,11 +69,11 @@ namespace ariel{
         return temp;
     }
 
-    bool ariel::MagicalContainer::PrimeIterator::operator==(const ariel::MagicalContainer::PrimeIterator &other) const{
-            return currentIndex_ == other.currentIndex_;
-        }
+    bool MagicalContainer::PrimeIterator::operator==(const MagicalContainer::PrimeIterator &other) const{
+        return &*this == &other;
+    }
 
-    bool ariel::MagicalContainer::PrimeIterator::operator!=(const ariel::MagicalContainer::PrimeIterator &other) const {
+    bool MagicalContainer::PrimeIterator::operator!=(const MagicalContainer::PrimeIterator &other) const{
         return !(*this == other);
     }
 
