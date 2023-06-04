@@ -198,9 +198,7 @@ namespace ariel{
 
     public:
         MagicalContainer():magic_(new vector<int>),ascendIter_(nullptr),sideIter_(nullptr),primeIter_(nullptr){}
-        ~MagicalContainer(){
-            delete magic_;
-        }
+        ~MagicalContainer(){}
         void addElement(int data){/*TODO*/
 
             magic_->push_back(data);
@@ -222,7 +220,18 @@ namespace ariel{
 
             return;
         }
-        void removeElement(int data){/*TODO*/ }
+        void removeElement(int data){/*TODO*/
+            auto it = std::find(magic_->begin(), magic_->end(), data);
+
+            // Check if the element was found
+            if (it != magic_->end()) {
+                // Remove the element from the vector
+                magic_->erase(it);
+            }else{
+                throw runtime_error("not exist element");
+            }
+        }
+
         int size() const {/*TODO*/return magic_->size();}
         vector<int>::iterator begin(){
             return magic_->begin();
